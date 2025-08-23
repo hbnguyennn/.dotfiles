@@ -54,3 +54,13 @@ set tags=./tags,tags;
 map <C-\> :vsp<CR>:exec("tag ".expand("<cword>"))<CR>
 map <C-p> : sp<CR>:exec("tag ".expand("<cword>"))<CR>
 map <C-t> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+
+"noremap! <C-?> <C-h>
+
+"call plug#begin()
+"Plug 'junegunn/seoul256.vim'
+"Plug 'morhetz/gruvbox'
+"call plug#end()
+
+"colorscheme seoul256
+

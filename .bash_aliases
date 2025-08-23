@@ -1,6 +1,6 @@
 
 alias v='nvim'
-alias l='ls -la'
+alias l='ls -lha'
 alias h='history'
 alias rmf='rm -rvf'
 alias c='clear'
