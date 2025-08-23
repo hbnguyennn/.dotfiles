@@ -1,0 +1,47 @@
+
+unset ignoreeof
+umask 022
+
+#----------------------------
+# Moudle to load if needed
+#----------------------------
+#module unload AAA
+#module load   AAA
+
+#------------------
+# tool to install 
+#   tmux
+#   git
+#   fd
+#   htop
+#   nvim
+#   kdiff3
+
+setenv EDITOR nvim 
+#setenv DISPLAY
+setenv PATH ${PAHT}:${HOME}/mylocal
+
+alias mycshrc  "v ${HOME}/.cshrc.aliases"
+alias smycshrc "source ${HOME}/.cshrc.aliases"
+
+alias v   "nvim"
+alias vi  "vim"
+alias l   "ls -lah"
+alias h   "history"
+alias c   "clear; pwd"
+alias rmf "rm -rvf"
+
+alias vdiff "vimdiff -c 'set diffopt+=iwhite'"
+alias _cd 'cd `find . -type d | fzf`'
+alias _v  'v  `fzf`'
+
+alias tmux "tmux -2 a -d -t"
+
+alias _nvim_tiny "setenv NVIM_APPNAME nvim_tiny"
+
+set filec
+set autolist = ambiguous
+set complele = enhance
+
+stty erase '^?'
+
