@@ -82,14 +82,14 @@
             "scope": [
                "comment",
                "comment_block",
-               "comment_line",
+               "comment_line"
             ],
 
             "settings" : {
-               "fontStyle" : "",
+               "fontStyle" : ""
             }
          }
-      ],
+      ]
    },
 
    "diffEditor.ignoreTrimWhitespace": true,
@@ -134,6 +134,5 @@
    "git.confirmSync": false,
 
    "chat.editor.fontSize": 16,
-   "chat.commandCenter.enabled": false,
-
+   "chat.commandCenter.enabled": false
 }

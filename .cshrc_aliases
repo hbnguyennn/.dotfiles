@@ -9,7 +9,7 @@ umask 022
 #module load   AAA
 
 #------------------
-# tool to install 
+# tool to install
 #   tmux
 #   git
 #   fd
@@ -17,8 +17,8 @@ umask 022
 #   nvim
 #   kdiff3
 
-setenv EDITOR nvim 
-#setenv DISPLAY
+setenv EDITOR nvim
+#setenv DISPLAY :1
 setenv PATH ${PAHT}:${HOME}/mylocal
 
 alias mycshrc  "v ${HOME}/.cshrc.aliases"
