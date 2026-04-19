@@ -32,6 +32,11 @@ vim.opt.fillchars    = { eob = " " }
 vim.g.snacks_animate = false
 --vim.g.autoformat = false
 
+--vim.opt.list         = true
+--vim.opt.listchars    = {
+--  space = '•'
+--}
+
 return {
   "snacks.nvim:",
   opts = {

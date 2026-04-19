@@ -26,8 +26,6 @@
    },
    "window.commandCenter": false,
    "window.menuBarVisibility": "compact",
-   "window.customTitleBarVisibility": "windowed",
-
    "security.workspace.trust.untrustedFiles": "open",
    "extensions.ignoreRecommendations": true,
 
