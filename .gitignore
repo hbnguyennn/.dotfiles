@@ -1,1 +1,10 @@
 .config/nvim/lazy-lock.json
+.config/btop
+.config/fish
+.config/gh
+.config/linearmouse
+.config/uv
+.config/raycast
+.config/zsh/plugins
+
+

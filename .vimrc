@@ -13,6 +13,7 @@ set noerrorbells
 set novisualbell
 set ts=3
 set expandtab
+set showmode
 
 set sw=2
 set ls=2
@@ -24,6 +25,8 @@ set mat=2
 set cd=,,
 
 set nobackup
+set noswapfile
+
 set statusline=%<%f%h%h%m%r%=%{&ff}\ %l,%c%V\ %P
 
 set mouse=a
