@@ -7,4 +7,5 @@
 .config/raycast
 .config/zsh/plugins
 
-
+.DS_Store
+.config/zsh/.zsh_sessions

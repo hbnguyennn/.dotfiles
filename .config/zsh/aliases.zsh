@@ -5,7 +5,7 @@ alias ls='eza --icons'
 alias ll='eza -lh --icons --git'
 
 # Detailed listing including hidden files
-alias l='eza -lah --icons --git'
+alias l='eza -lah --icons --git --group-directories-first'
 
 # Tree view
 alias tree='eza --tree --icons'
@@ -27,6 +27,7 @@ alias smycshrc='source ${HOME}/.config/zsh/.zshrc'
 alias mycshrc='nvim ${HOME}/.config/zsh/.zshrc'
 alias rmf='rm -rvf'
 alias h='history'
+alias c='clear'
 
 # =========================================================
 # Navigation
