@@ -1,22 +1,51 @@
 
+# Allow Control-D to exit
 unset ignoreeof
+
+# 755 file creation
 umask 022
 
 #----------------------------
 # Moudle to load if needed
 #----------------------------
-#module unload AAA
-#module load   AAA
-
-#------------------
-# tool to install
 #   tmux
+#   eza
+#   bat
 #   git
+#   rp
+#   fzf
 #   fd
 #   htop
 #   nvim
 #   kdiff3
+set my_module = (     \
+  bat                 \
+  git/2.34.1          \
+  tmux                \
+  fd/7.3.0            \
+  ripgrep             \
+  kdiff3              \
+)
 
+foreach mod ($my_module)
+  set mod_name = `echo $mod | cut -d/ -f1`
+  module unload $mod_name >& /dev/null
+  module load   $mod
+end
+
+# ------------------------------------------------------------
+# Aliases && ENV variables setting
+# ------------------------------------------------------------
+alias loadperforce   "setenv P4PORT 1666; setenv P4EDITOR nvim; setenv P4DIFF diff; setenv P4CONFIG .p4config"
+#loadperforce
+alias p4s "p4 sync"
+alias p4e "p4 edit"
+alias p4d "p4 diff"
+alias p4o "p4 opened"
+
+alias loaddesignware "setenv DESIGNWARE_HOME /tools/designware"
+
+#COMMON TOOLS
 setenv EDITOR nvim
 #setenv DISPLAY :1
 setenv PATH ${PAHT}:${HOME}/mylocal
@@ -24,20 +53,26 @@ setenv PATH ${PAHT}:${HOME}/mylocal
 alias mycshrc  "v ${HOME}/.cshrc.aliases"
 alias smycshrc "source ${HOME}/.cshrc.aliases"
 
-alias v   "nvim"
-alias vi  "vim"
-alias l   "ls -lah"
-alias h   "history"
-alias c   "clear; pwd"
-alias rmf "rm -rvf"
+alias v   'setenv NVIM_APPNAME nvim_lazy; nvim'
+alias vi  'vim'
+alias l   'clear; pwd;ls -lah'
+alias h   'history'
+alias c   'clear; pwd'
+alias rmf 'rm -rvf'
+alias fff 'fzf --bind 'enter:become(v {})''
+alias _cd 'cd `find . -type d | fzf`'
+alias _v  'v `fzf`'
+alias _du 'du -sh `ls -d ./.[a-zA-Z]* ./*` | sort -rh'
+alias _env 'env | sort | awk -F= '"'"'{printf "%-40s %s\n", $1, substr($0, index($0,"="+))}'"'"''
+alias _check_nvim 'nvim --startuptime /tmp/nvim_startuptime.log +q && sort -K2 /tmp/nvim_startuptime.log | tail -20'
 
 alias vdiff "vimdiff -c 'set diffopt+=iwhite'"
 alias _cd 'cd `find . -type d | fzf`'
 alias _v  'v  `fzf`'
-
 alias tmux "tmux -2 a -d -t"
 
-alias _nvim_tiny "setenv NVIM_APPNAME nvim_tiny"
+alias _bsub  "bsub -app normal -R 'select[os_version=AlmaLinux8.0]' -R 'rusage[mem=1024]' -Is"
+alias _bjob  'bjobs -o "id: stat run_time exce_cwd mem:15 job_name command"'
 
 set filec
 set autolist = ambiguous
@@ -45,3 +80,17 @@ set complele = enhance
 
 stty erase '^?'
 
+#Clean updated PATH
+alias _check_path 'echo $PATH | tr ":" "\n" | sort'
+
+set newpath = ()
+foreach dir ($path)
+  set found = 0
+  foreach d ($newpath)
+    if ("$d" == "$dir") set found = 1
+  end
+  if ($found == 0) set newpath = ($newpath $dir)
+end
+set path = (($newpath))
+
+###### useful command put here

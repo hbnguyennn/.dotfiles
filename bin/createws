@@ -1,0 +1,67 @@
+#!/bin/sh
+
+while getopts d:p flag;do
+   case "${flag}" in
+      d) p4view="${OPTARG}" ;;
+      p) debug="${OPTARG}" ;;
+   esac
+done
+
+if [-n "${p4view}"]; then
+   echo "[INFO] p4view : $p4view "
+else
+   echo "[Error] no input for p4 directtory"
+   echo "Usage : $0 -d p4_directory <-p> //debug//"
+   exit 1
+fi
+
+curr_dir=$(basename $PWD)
+mytime=$(date +'%Y%m%D%H%M')
+client_name="${USER}_${curr_dir}_${mytime}"
+
+echo $p4view
+echo $client_name
+
+export workspace=${client_name}
+
+if [ -e .p4config ]; then
+   read -sp "[INFO] .p4config existed ! do you want to remove and create again ? y/n" yesno
+   echo "${yesno}"
+   if [ $yesno = 'y' ]; then
+      rm .p4config
+   else
+      echo "[INFO] Abort workspace creation !!!"
+   fi
+fi
+
+# Create .p4config for workspace
+touch .p4config
+echo "P4PORT=AAAA:1666"         >> .p4config
+echo "P4EDITOR=vim"             >> .p4config
+echo "P4DIFF=vimdiff"           >> .p4config
+echo "P4CLIENT=${client_name}"  >> .p4config
+
+# Create p4spec.tmp
+p4file="p4spec.tmp"
+if [ -e ${p4file} ]; then
+   rm ${p4file}
+fi
+touch ${p4file}
+
+echo "Client: ${client_name}" >> ${p4file}
+echo "ROOT: $PWD"             >> ${p4file}
+echo "Owner: $USER"           >> ${p4file}
+echo "Options: noallwrite noclobber nocompress unlocked nomodtime normdir noaltsync " >> ${p4file}
+echo "SubmitOptions: submitunchanged " .                                              >> ${p4file}
+echo "LineEnd: local"                       >> ${p4file}
+echo "View:"                                >> ${p4file}
+echo "  ${p4view}/...  //${workspace}/... " >> ${p4file}
+echo ""                                     >> ${p4file}
+
+cat ${p4file} | p4 client -i
+
+echo "[INFO] workspace ${client_name} created"
+echo "[INFO] do > p4 sync for sync workspace
+rm ${p4file}
+
+
