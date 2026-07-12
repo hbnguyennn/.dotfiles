@@ -2,10 +2,10 @@
 alias ls='eza --icons'
 
 # Detailed listing
-alias ll='eza -lh --icons --git'
+alias l='eza -lh --icons --git'
 
 # Detailed listing including hidden files
-alias l='eza -lah --icons --git --group-directories-first'
+alias ll='eza -lah --icons --git --group-directories-first'
 
 # Tree view
 alias tree='eza --tree --icons'
