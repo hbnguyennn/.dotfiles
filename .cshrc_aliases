@@ -45,6 +45,28 @@ alias p4o "p4 opened"
 
 alias loaddesignware "setenv DESIGNWARE_HOME /tools/designware"
 
+#----------------------------------
+# Common variable
+#----------------------------------
+
+set my_env = ( \
+  "myuserdata           /asdfasf/asdfasdfa/asdfadf" \
+  "mylocal              /asdfasf/asdfasdfa/asdfadf" \
+  "myproject            /asdfasf/asdfasdfa/asdfadf" \
+  "myproject_data       /asdfasf/asdfasdfa/asdfadf" \
+  "myproject_data_backup/asdfasf/asdfasdfa/asdfadf" \
+  "myproject_data_backup/asdfasf/asdfasdfa/asdfadf" \
+)
+set i = 1
+while ($i <= $#my_env)
+  set env_name = `echo $my_env[$i] | awk '{print $1}'`
+  set env_val  = `echo $my_env[$i] | awk '{print $2}'`
+  unsetenv $env_name
+  setenv $env_name $env_path
+  @ i++
+end
+unset i env_name env_val
+
 #COMMON TOOLS
 setenv EDITOR nvim
 #setenv DISPLAY :1
@@ -71,7 +93,8 @@ alias _cd 'cd `find . -type d | fzf`'
 alias _v  'v  `fzf`'
 alias tmux "tmux -2 a -d -t"
 
-alias _bsub  "bsub -app normal -R 'select[os_version=AlmaLinux8.0]' -R 'rusage[mem=1024]' -Is"
+#alias _bsub  "bsub -app normal -R 'select[os_version=AlmaLinux8.0]' -R 'rusage[mem=1024]' -Is"
+alias _bsub  "${myscript_dir}/bin/bsub_table.sh"
 alias _bjob  'bjobs -o "id: stat run_time exce_cwd mem:15 job_name command"'
 
 set filec

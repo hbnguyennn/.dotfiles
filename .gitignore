@@ -6,6 +6,7 @@
 .config/uv
 .config/raycast
 .config/zsh/plugins
+.config/superfile
 
 .DS_Store
 .config/zsh/.zsh_sessions
