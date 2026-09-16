@@ -52,7 +52,7 @@ echo "Client: ${client_name}" >> ${p4file}
 echo "ROOT: $PWD"             >> ${p4file}
 echo "Owner: $USER"           >> ${p4file}
 echo "Options: noallwrite noclobber nocompress unlocked nomodtime normdir noaltsync " >> ${p4file}
-echo "SubmitOptions: submitunchanged " .                                              >> ${p4file}
+echo "SubmitOptions: submitunchanged "                                               >> ${p4file}
 echo "LineEnd: local"                       >> ${p4file}
 echo "View:"                                >> ${p4file}
 echo "  ${p4view}/...  //${workspace}/... " >> ${p4file}
