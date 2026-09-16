@@ -6,8 +6,8 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.color_scheme = "Catppuccin Mocha"
---config.color_scheme = 'GruvboxDark'
+--config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "GruvboxDark"
 
 config.window_decorations = "RESIZE"
 
@@ -145,7 +145,7 @@ wezterm.on("update-right-status", function(window, _)
 end)
 
 -- tab bar
-config.hide_tab_bar_if_only_one_tab = true
+config.hide_tab_bar_if_only_one_tab = false
 config.tab_bar_at_bottom = false
 config.use_fancy_tab_bar = true
 config.tab_and_split_indices_are_zero_based = true

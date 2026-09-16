@@ -1,5 +1,10 @@
 stow .
 
+# macOS Installation Example
+brew install starship
+brew tap homebrew/cask-fonts && brew install --cask font-jetbrains-mono-nerd-font
+
+
 # Tools need to install
 ```bash
 sudo install build-essential
